@@ -96,7 +96,7 @@
           </li>
         </ul>
         <button
-          class="text-black bg-white w-full p-4 rounded-full text-base font-semibold cursor-pointer hover:bg-gray-200 hover:duration-300"
+          class="text-black bg-white w-full p-4 rounded-full text-base font-semibold cursor-pointer hover:bg-blue-water-100 hover:duration-300 hover:text-white"
         >
           Post
         </button>
@@ -304,7 +304,67 @@
           </div>
         </div>
       </section>
-      <section class="min-w-[350px]">What's Happening</section>
+      <section class="min-w-[350px] flex flex-col gap-4">
+        <div
+          class="mt-8 border-2 border-line px-3.5 py-3 flex gap-2 items-center rounded-full focus-within:border-blue-water-100"
+        >
+          <img
+            src="assets/search-normal-dim.svg"
+            alt="search-icon"
+            class="w-4 h-4"
+          />
+          <input
+            type="text"
+            placeholder="Search"
+            class="outline-none w-full text-sm text-base"
+          />
+        </div>
+        <div
+          class="flex flex-col gap-2 text-white p-4 rounded-3xl border-2 border-line"
+        >
+          <h3 class="text-xl font-semibold">Subscribe to Premium</h3>
+          <p class="text-sm">
+            Subscribe to unlock new features and if eligible, receive a share of
+            revenue.
+          </p>
+          <button
+            class="text-sm px-5 py-2 font-semibold bg-blue-water-100 hover:bg-blue-water-200 rounded-full w-fit hover:duration-300 cursor-pointer"
+          >
+            Subscribe
+          </button>
+        </div>
+        <div class="flex flex-col gap-4 border-line border-2 rounded-3xl p-4">
+          <h3 class="text-xl font-semibold">What's happening</h3>
+          <div class="flex flex-col gap-4">
+            <div
+              class="cursor-pointer hover:bg-gray-dark -ml-4 -mr-4 px-4 py-2 duration-300"
+            >
+              <p class="text-sm text-gray-500">Only on X · Trending</p>
+              <p class="font-semibold text-white">SiscaKohl Nyuci DiBathtub</p>
+              <p class="text-sm text-gray-500">1,926 posts</p>
+            </div>
+            <div
+              class="cursor-pointer hover:bg-gray-dark -ml-4 -mr-4 px-4 py-2 duration-300"
+            >
+              <p class="text-sm text-gray-500">Only on X · Trending</p>
+              <p class="font-semibold text-white">SiscaKohl Nyuci DiBathtub</p>
+              <p class="text-sm text-gray-500">1,926 posts</p>
+            </div>
+            <div
+              class="cursor-pointer hover:bg-gray-dark -ml-4 -mr-4 px-4 py-2 duration-300"
+            >
+              <p class="text-sm text-gray-500">Only on X · Trending</p>
+              <p class="font-semibold text-white">SiscaKohl Nyuci DiBathtub</p>
+              <p class="text-sm text-gray-500">1,926 posts</p>
+            </div>
+          </div>
+          <button
+            class="text-blue-water-100 text-sm cursor-pointer w-fit hover:text-blue-water-200"
+          >
+            Show more
+          </button>
+        </div>
+      </section>
     </div>
   </body>
 </html>
