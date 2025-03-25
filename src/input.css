@@ -3,3 +3,12 @@
 * {
   font-family: 'Poppins', sans-serif;
 }
+
+/* Override Style */
+
+@theme {
+  --color-line: #1e1e1e;
+  --color-gray-dark: #171717;
+  --color-blue-water-100: #1d9bf0;
+  --color-blue-water-200: #1a8cf0d8;
+}

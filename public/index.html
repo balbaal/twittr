@@ -12,9 +12,116 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Home</title>
   </head>
-  <body>
-    <h1 class="text-3xl text-pink-500">Home Page</h1>
+  <body class="bg-black text-white">
+    <div class="max-w-7xl mx-auto flex flex-row gap-5 h-screen px-7">
+      <section class="min-w-[250px] flex flex-col gap-3 pt-8">
+        <h1 class="text-3xl font-bold">twittr.</h1>
+        <ul class="text-xl -ml-3">
+          <li class="py-3">
+            <a
+              href="#"
+              class="font-bold hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
+            >
+              <img src="assets/home-hashtag.svg" class="h-7 w-7 inline mr-4" />
+              Home
+            </a>
+          </li>
+          <li class="py-3">
+            <a
+              href="#"
+              class="hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
+            >
+              <img src="assets/search-normal.svg" class="h-7 w-7 inline mr-4" />
+              Explore
+            </a>
+          </li>
+          <li class="py-3">
+            <a
+              href="#"
+              class="hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
+            >
+              <img src="assets/notification.svg" class="h-7 w-7 inline mr-4" />
+              Notifications
+            </a>
+          </li>
+          <li class="py-3">
+            <a
+              href="#"
+              class="hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
+            >
+              <img src="assets/sms.svg" class="h-7 w-7 inline mr-4" />
+              Messages
+            </a>
+          </li>
+          <li class="py-3">
+            <a
+              href="#"
+              class="hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
+            >
+              <img
+                src="assets/profile-circle.svg"
+                class="h-7 w-7 inline mr-4"
+              />
+              Grok
+            </a>
+          </li>
+          <li class="py-3">
+            <a
+              href="#"
+              class="hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
+            >
+              <img src="assets/note-add.svg" class="h-7 w-7 inline mr-4" />
+              Bookmarks
+            </a>
+          </li>
+          <li class="py-3">
+            <a
+              href="#"
+              class="hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
+            >
+              <img src="assets/crown-light.svg" class="h-7 w-7 inline mr-4" />
+              Communities
+            </a>
+          </li>
+          <li class="py-3">
+            <a
+              href="#"
+              class="hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
+            >
+              <img src="assets/group.svg" class="h-7 w-7 inline mr-4" />
+              Premium
+            </a>
+          </li>
+        </ul>
+        <button
+          class="text-black bg-white w-full p-4 rounded-full text-base font-semibold cursor-pointer hover:bg-gray-200 hover:duration-300"
+        >
+          Post
+        </button>
+      </section>
+      <section class="grow h-fit border-line border-l-2 border-r-2">
+        <div
+          class="flex bg-black justify-around text-base border-b-2 border-line"
+        >
+          <div
+            class="bg-black hover:bg-gray-dark flex justify-center grow cursor-pointer hover:duration-300"
+          >
+            <button
+              class="py-4 text-white border-b-4 border-blue-water-100 font-semibold"
+            >
+              For you
+            </button>
+          </div>
+          <div
+            class="bg-black hover:bg-gray-dark flex justify-center grow cursor-pointer hover:duration-300"
+          >
+            <button class="py-4 text-gray-500">Following</button>
+          </div>
+        </div>
+      </section>
+      <section class="min-w-[350px]">What's Happening</section>
+    </div>
   </body>
 </html>
