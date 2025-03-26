@@ -150,6 +150,38 @@
         </button>
       </section>
       <section class="grow h-fit border-line border-l-2 border-r-2">
+        <div id="profile-header">
+          <div class="flex flex-col p-4">
+            <h4 class="font-semibold text-xl">Piko</h4>
+            <p class="text-gray-500 text-sm">2 posts</p>
+          </div>
+          <div
+            class="h-50 w-full bg-[url('https://pbs.twimg.com/profile_banners/1894421492617940996/1741628471')] bg-cover bg-center"
+          ></div>
+          <div class="relative flex p-4 w-full">
+            <img
+              src="assets/girl1.png"
+              alt="profile-image"
+              class="h-36 w-36 rounded-full border-4 border-black absolute -mt-22"
+            />
+            <button
+              class="px-4 py-2 border-line border-2 text-sm rounded-full font-semibold text-white bg-black hover:bg-blue-water-100 duration-300 h-fit ml-auto cursor-pointer"
+            >
+              Edit Profile
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 p-4">
+          <div class="flex flex-col">
+            <h3 class="text-xl text-white font-semibold">Piko</h3>
+            <p class="text-sm text-gray-500">@hai_piko</p>
+          </div>
+          <p class="text-sm text-gray-500">Joined February 2025</p>
+          <div class="flex flex-row gap-4 text-sm text-white">
+            <p>2833 <span class="text-gray-500">Following</span></p>
+            <p>1222 <span class="text-gray-500">Followers</span></p>
+          </div>
+        </div>
         <div
           class="flex bg-black justify-around text-base border-b-2 border-line"
         >
@@ -159,53 +191,33 @@
             <button
               class="py-4 text-white border-b-4 border-blue-water-100 font-semibold"
             >
-              For you
+              Posts
             </button>
           </div>
           <div
             class="bg-black hover:bg-gray-dark flex justify-center grow cursor-pointer hover:duration-300"
           >
-            <button class="py-4 text-gray-500">Following</button>
+            <button class="py-4 text-gray-500">Replies</button>
           </div>
-        </div>
-        <div class="flex gap-4 p-4 border-b-2 border-line">
-          <img
-            src="assets/girl2.png"
-            alt="image-profile"
-            class="rounded-full w-10 h-10"
-          />
-          <div class="w-full">
-            <textarea
-              placeholder="What's happening?"
-              class="w-full h-20 focus:h-36 resize-none focus:outline-none focus:font-semibold focus:duration-300 pt-2 border-b-2 border-line mb-2"
-            ></textarea>
-            <div class="flex items-center gap-2 flex-row justify-between">
-              <div class="flex gap-2">
-                <div
-                  class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
-                >
-                  <p>😀</p>
-                  <p class="font-semibold hidden md:block">Smile</p>
-                </div>
-                <div
-                  class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
-                >
-                  <p>😖</p>
-                  <p class="font-semibold hidden md:block">Angry</p>
-                </div>
-                <div
-                  class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
-                >
-                  <p>😎</p>
-                  <p class="font-semibold hidden md:block">Sad</p>
-                </div>
-              </div>
-              <button
-                class="text-black w-[100px] bg-white p-2 rounded-full font-semibold cursor-pointer hover:bg-blue-water-100 hover:duration-300 hover:text-white"
-              >
-                Post
-              </button>
-            </div>
+          <div
+            class="bg-black hover:bg-gray-dark flex justify-center grow cursor-pointer hover:duration-300"
+          >
+            <button class="py-4 text-gray-500">Highlights</button>
+          </div>
+          <div
+            class="bg-black hover:bg-gray-dark flex justify-center grow cursor-pointer hover:duration-300"
+          >
+            <button class="py-4 text-gray-500">Articles</button>
+          </div>
+          <div
+            class="bg-black hover:bg-gray-dark flex justify-center grow cursor-pointer hover:duration-300"
+          >
+            <button class="py-4 text-gray-500">Media</button>
+          </div>
+          <div
+            class="bg-black hover:bg-gray-dark flex justify-center grow cursor-pointer hover:duration-300"
+          >
+            <button class="py-4 text-gray-500">Likes</button>
           </div>
         </div>
 
