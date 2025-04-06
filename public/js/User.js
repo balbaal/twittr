@@ -1,12 +1,15 @@
 class User {
   constructor() {
     this._users = null;
+
+    this.USERNAME_LOGGED_KEY = 'usernameLoggedIn';
+    this.USERS_KEY = 'users';
   }
 
   getUsers() {
     if (this._users === null) {
       try {
-        const storedUsers = localStorage.getItem('users');
+        const storedUsers = localStorage.getItem(this.USERS_KEY);
         this._users = storedUsers ? JSON.parse(storedUsers) : [];
       } catch (error) {
         return (this._users = []);
@@ -42,7 +45,7 @@ class User {
     users.push(newUser);
 
     try {
-      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
       return {
         success: true,
       };
@@ -57,5 +60,41 @@ class User {
       success: true,
       error: '',
     };
+  }
+
+  userSignIn(userData) {
+    const { username, password } = userData;
+
+    if (username.trim() === '') {
+      return {
+        success: false,
+        error: 'Username is empty',
+      };
+    }
+
+    if (password.trim() === '') {
+      return {
+        success: false,
+        error: 'Password is empty',
+      };
+    }
+
+    const userList = this.getUsers();
+    const isUserExist = userList.some(
+      (user) =>
+        user.username.toLowerCase() === username.toLowerCase() &&
+        user.password.toLowerCase() === password.toLowerCase()
+    );
+
+    if (isUserExist) {
+      return {
+        success: true,
+      };
+    } else {
+      return {
+        success: false,
+        error: 'Username or Password is wrong',
+      };
+    }
   }
 }
