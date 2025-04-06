@@ -21,12 +21,15 @@
         <div class="flex flex-col gap-2">
           <h1 class="text-4xl font-bold">Sign Up</h1>
           <p class="text-base">What’s trend, what’s good for you.</p>
-          <p class="text-sm px-3.5 py-1.5 bg-red-500 rounded-full">
+          <p
+            id="instantMessage"
+            class="hidden text-sm px-3.5 py-1.5 bg-red-500 rounded-full"
+          >
             something wrong!!
           </p>
         </div>
 
-        <form class="flex flex-col gap-12">
+        <form id="formManager" class="flex flex-col gap-12">
           <div class="flex flex-col gap-4">
             <div class="flex flex-col gap-2">
               <label for="input-fullname">Fullname</label>
@@ -87,6 +90,7 @@
           </div>
           <div class="flex flex-col gap-4">
             <button
+              type="submit"
               class="bg-blue-500 font-bold rounded-full p-3 text-center w-full hover:bg-blue-water-100 cursor-pointer duration-300"
             >
               Create Account
@@ -104,5 +108,8 @@
         <h1 class="font-extrabold text-white text-9xl">twittr.</h1>
       </div>
     </div>
+
+    <script src="js/User.js"></script>
+    <script src="js/addUser.js"></script>
   </body>
 </html>
