@@ -168,46 +168,61 @@
             <button class="py-4 text-gray-500">Following</button>
           </div>
         </div>
-        <div class="flex gap-4 p-4 border-b-2 border-line">
+        <form
+          id="formManagerPost"
+          class="flex gap-4 p-4 border-b-2 border-line"
+        >
           <img
+            id="ownerPhoto"
             src="assets/girl2.png"
             alt="image-profile"
             class="rounded-full w-10 h-10"
           />
           <div class="w-full">
+            <p
+              id="instantMessage"
+              class="hidden text-sm px-3.5 py-1.5 bg-red-500 rounded-full"
+            >
+              something wrong!!
+            </p>
             <textarea
+              id="input-post"
               placeholder="What's happening?"
               class="w-full h-20 focus:h-36 resize-none focus:outline-none focus:font-semibold focus:duration-300 pt-2 border-b-2 border-line mb-2"
             ></textarea>
             <div class="flex items-center gap-2 flex-row justify-between">
               <div class="flex gap-2">
                 <div
-                  class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
+                  data-feeling="😀 Smile"
+                  class="data-feeling flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
                 >
                   <p>😀</p>
                   <p class="font-semibold hidden md:block">Smile</p>
                 </div>
                 <div
-                  class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
+                  data-feeling="😖 Angry"
+                  class="data-feeling flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
                 >
                   <p>😖</p>
                   <p class="font-semibold hidden md:block">Angry</p>
                 </div>
                 <div
-                  class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
+                  data-feeling="😎 Confident"
+                  class="data-feeling flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
                 >
                   <p>😎</p>
-                  <p class="font-semibold hidden md:block">Sad</p>
+                  <p class="font-semibold hidden md:block">Confident</p>
                 </div>
               </div>
               <button
+                type="submit"
                 class="text-black w-[100px] bg-white p-2 rounded-full font-semibold cursor-pointer hover:bg-blue-water-100 hover:duration-300 hover:text-white"
               >
                 Post
               </button>
             </div>
           </div>
-        </div>
+        </form>
 
         <!-- Post  -->
         <div class="flex flex-col">
@@ -414,5 +429,9 @@
         </div>
       </section>
     </div>
+
+    <script src="js/User.js"></script>
+    <script src="js/Twit.js"></script>
+    <script src="js/managePostTwit.js"></script>
   </body>
 </html>
