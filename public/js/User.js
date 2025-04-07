@@ -36,7 +36,7 @@ class User {
     }
 
     const newUser = {
-      id: new Date(),
+      id: Date.now(),
       isActive: true,
       ...userData,
     };

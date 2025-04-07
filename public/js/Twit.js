@@ -19,8 +19,6 @@ class Twit {
   }
 
   saveTwit(twitData) {
-    console.log(twitData);
-
     const { twitText, twitEmoticon } = twitData;
     if (twitText.trim() === '' || twitEmoticon.trim() === '') {
       return {
@@ -29,8 +27,14 @@ class Twit {
       };
     }
 
+    const newTwit = {
+      id: Date.now(),
+      isActive: true,
+      ...twitData,
+    };
+
     const twitList = this.getTwits();
-    twitList.push(twitData);
+    twitList.push(newTwit);
 
     try {
       localStorage.setItem(this.TWITS_KEY, JSON.stringify(twitList));
