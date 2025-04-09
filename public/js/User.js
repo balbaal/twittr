@@ -4,6 +4,7 @@ class User {
 
     this.USERNAME_LOGGED_KEY = 'usernameLoggedIn';
     this.USERS_KEY = 'users';
+    this.USERNAME_PROFILE_VISIT = 'usernameProfileVisit';
   }
 
   getUsers() {

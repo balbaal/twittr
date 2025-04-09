@@ -18,7 +18,7 @@
     <div class="max-w-7xl mx-auto flex flex-row gap-5 h-screen px-7">
       <!-- Sidebar Left: Mobile View -->
       <section class="xl:hidden">
-        <h1 class="text-3xl font-bold py-4">tw.</h1>
+        <a href="index.html" class="text-3xl font-bold py-4">tw.</a>
         <ul>
           <li class="py-3">
             <a href="#">
@@ -56,7 +56,7 @@
             </a>
           </li>
           <li class="py-3">
-            <a href="#">
+            <a href="login.html">
               <img src="assets/group.svg" class="h-7 w-7 inline" />
             </a>
           </li>
@@ -65,7 +65,7 @@
 
       <!-- Sidebar Left: Desktop View -->
       <section class="hidden min-w-[250px] xl:flex flex-col gap-3 mt-4">
-        <h1 class="text-3xl font-bold">twittr.</h1>
+        <a href="index.html" class="text-3xl font-bold">twittr.</a>
         <ul class="text-xl -ml-3">
           <li class="py-3">
             <a
@@ -135,11 +135,11 @@
           </li>
           <li class="py-3">
             <a
-              href="#"
+              href="login.html"
               class="hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
             >
               <img src="assets/group.svg" class="h-7 w-7 inline mr-4" />
-              Premium
+              Logout
             </a>
           </li>
         </ul>
@@ -150,6 +150,9 @@
         </button>
       </section>
       <section class="grow h-fit border-line border-l-2 border-r-2">
+        <p id="instantMessage" class="hidden text-sm px-3.5 py-1.5 bg-red-500">
+          something wrong!!
+        </p>
         <div
           class="flex bg-black justify-around text-base border-b-2 border-line"
         >
@@ -176,15 +179,9 @@
             id="ownerPhoto"
             src="assets/girl2.png"
             alt="image-profile"
-            class="rounded-full w-10 h-10"
+            class="rounded-full w-10 h-10 object-cover"
           />
           <div class="w-full">
-            <p
-              id="instantMessage"
-              class="hidden text-sm px-3.5 py-1.5 bg-red-500 rounded-full"
-            >
-              something wrong!!
-            </p>
             <textarea
               id="input-post"
               placeholder="What's happening?"
