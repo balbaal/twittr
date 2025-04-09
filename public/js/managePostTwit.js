@@ -98,6 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
         (user) => user.username === item.ownerTwit
       );
 
+      const isShowDeleteButton = item.ownerTwit === usernameLoggedIn;
+
       const twitItem = document.createElement('div');
       twitItem.className = 'border-b-2 p-4 border-line';
       twitItem.id = `twit-${item.id}`;
@@ -134,14 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }" />
             <p id="total-like" class="text-sm text-pink-500">${totalLike} Likes</p>
           </a>
-          <a href="#" class="flex flex-row gap-2 items-center">
-            <img src="assets/trash.svg" />
-            <p class="text-sm text-gray-500">Delete</p>
-          </a>
-          <a href="#" class="flex flex-row gap-2 items-center">
-            <img src="assets/warning-2.svg" />
-            <p class="text-sm text-gray-500">Report</p>
-          </a>
+          ${
+            isShowDeleteButton
+              ? `<a
+                id='delete-twit-${item.id}'
+                href='#'
+                class='flex flex-row gap-2 items-center'
+              >
+                <img src='assets/trash.svg' />
+                <p class='text-sm text-gray-500'>Delete</p>
+              </a>`
+              : `<a href='#' class='flex flex-row gap-2 items-center'>
+                <img src='assets/warning-2.svg' />
+                <p class='text-sm text-gray-500'>Report</p>
+              </a>`
+          }
         </div>
       `;
 
@@ -179,6 +188,27 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 5000);
         }
       });
+
+      // event trigger for Delete butotn
+      const deleteButton = document.querySelector(`#delete-twit-${item.id}`);
+
+      if (!!deleteButton) {
+        deleteButton.addEventListener('click', (event) => {
+          event.preventDefault();
+
+          // Delete twit and update local storage
+          const result = twitModel.deleteTwit(item.id);
+
+          // Response condition
+          if (result.success) {
+            instantMessage.style.display = 'none';
+            displayAllTwit(twitModel.getTwits());
+          } else {
+            instantMessage.style.display = 'flex';
+            instantMessage.textContent = result.error;
+          }
+        });
+      }
     });
   }
 

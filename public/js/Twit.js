@@ -33,6 +33,34 @@ class Twit {
     return this._likeTwits;
   }
 
+  deleteTwit(twitId) {
+    const allTwits = this.getTwits();
+    const indexTwit = allTwits.findIndex((twit) => twit.id === twitId);
+
+    if (indexTwit !== -1) {
+      allTwits.splice(indexTwit, 1);
+
+      console.log(allTwits);
+
+      try {
+        localStorage.setItem(this.TWITS_KEY, JSON.stringify(allTwits));
+        return {
+          success: true,
+        };
+      } catch (error) {
+        return {
+          success: false,
+          error: 'Failed to delete twit',
+        };
+      }
+    } else {
+      return {
+        success: false,
+        error: "Twit can't be find",
+      };
+    }
+  }
+
   saveTwit(twitData) {
     const { text, emoticon } = twitData;
     if (text.trim() === '' || emoticon.trim() === '') {
