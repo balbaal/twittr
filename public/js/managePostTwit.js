@@ -66,6 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Get Total Like
+  function getTotalLike(twit) {
+    const existingLikes = twitModel.getLikeTwits();
+    const totalLike = existingLikes.filter(
+      (like) => like.twitId === twit.id
+    ).length;
+
+    return totalLike;
+  }
+
   // Get All Twit
   const getExistingTwits = twitModel.getTwits();
 
@@ -78,6 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
     twits.sort((a, b) => b.id - a.id);
 
     twits.forEach((item, i) => {
+      const totalLike = getTotalLike(item);
+      const hasLiked = twitModel.hasUserLikeTwit({
+        twitId: item.id,
+        username: usernameLoggedIn,
+      });
+
       const ownerTwit = allUsers.find(
         (user) => user.username === item.ownerTwit
       );
@@ -110,9 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
         <div class="flex flex-row gap-8 items-center mt-4 pl-14">
-          <a href="#" class="flex flex-row gap-2 items-center">
-            <img src="assets/heart.svg" />
-            <p class="text-sm text-pink-500">128 Likes</p>
+          <a id="love-twit-${
+            item.id
+          }" href="#" class="flex flex-row gap-2 items-center">
+            <img class="love-icon" src="${
+              hasLiked ? 'assets/heart-fill.svg' : 'assets/heart.svg'
+            }" />
+            <p id="total-like" class="text-sm text-pink-500">${totalLike} Likes</p>
           </a>
           <a href="#" class="flex flex-row gap-2 items-center">
             <img src="assets/trash.svg" />
@@ -126,6 +146,39 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       twitWrapper.appendChild(twitItem);
+
+      // event trigger for Like button
+      const twitButton = document.querySelector(`#love-twit-${item.id}`);
+
+      twitButton.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const twitLikeData = {
+          twitId: item.id,
+          username: usernameLoggedIn,
+        };
+
+        // Store like data to local storage
+        const result = twitModel.saveLikeTwit(twitLikeData);
+
+        // Condition response
+        if (result.success) {
+          instantMessage.style.display = 'none';
+
+          const twitLikeCount = twitItem.querySelector('#total-like');
+          twitLikeCount.textContent = `${totalLike + 1} Likes`;
+
+          const loveIcon = twitItem.querySelector('.love-icon');
+          loveIcon.src = 'assets/heart-fill.svg';
+        } else {
+          instantMessage.style.display = 'flex';
+          instantMessage.textContent = result.error;
+
+          setTimeout(() => {
+            instantMessage.style.display = 'none';
+          }, 5000);
+        }
+      });
     });
   }
 
