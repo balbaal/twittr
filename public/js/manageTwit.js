@@ -1,0 +1,148 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const formManagerTwit = document.querySelector('#form-manager-twit');
+  const formInputTwit = document.querySelector('#form-input-content');
+  const ownerPhoto = document.querySelector('#owner-photo');
+  const instantMessage = document.querySelector('#instant-message');
+
+  // Instance Model
+  const userModel = new User();
+  const twitModel = new Twit();
+
+  function generateCreateAt() {
+    const currentDate = new Date();
+    const fullYear = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const date = String(currentDate.getDate()).padStart(2, '0');
+
+    return `${fullYear}-${month}-${date}`;
+  }
+
+  // Set Avatar Owner
+  const usernameLoggedIn = localStorage.getItem(userModel.USERNAME_LOGGED_KEY);
+  const userLoggedData = userModel
+    .getUsers()
+    .find((user) => user.username === usernameLoggedIn);
+  ownerPhoto.src = userLoggedData.avatar;
+
+  // Get Selected Emoticon
+  const feelingEmoticons = document.querySelectorAll('.data-feeling');
+  let selectedFeeling = null;
+
+  feelingEmoticons.forEach((emoticon) => {
+    emoticon.addEventListener('click', () => {
+      selectedFeeling = emoticon.getAttribute('data-feeling');
+      console.log(selectedFeeling, '>>> feeling');
+
+      // Reset styling border to default
+      feelingEmoticons.forEach((_) => {
+        _.classList.remove('border-blue-water-100');
+        _.classList.add('border-line');
+      });
+
+      // Set selected emoticon style border
+      emoticon.classList.remove('border-line');
+      emoticon.classList.add('border-blue-water-100');
+    });
+  });
+
+  // Form Submit Trigger
+  formManagerTwit.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const twitData = {
+      text: formInputTwit.value,
+      emoticon: selectedFeeling,
+      ownerTwit: usernameLoggedIn,
+      createdAt: generateCreateAt(),
+    };
+
+    // Storing Twit Data
+    const result = twitModel.saveTwit(twitData);
+
+    // Result Condition
+    if (result.success) {
+      instantMessage.style.display = 'none';
+
+      // Need to clear all form
+      formInputTwit.value = '';
+
+      selectedFeeling = null;
+      feelingEmoticons.forEach((_) => {
+        _.classList.remove('border-blue-water-100');
+        _.classList.add('border-line');
+      });
+
+      displayAllTwits(twitModel.getTwits());
+    } else {
+      instantMessage.style.display = 'flex';
+      instantMessage.textContent = result.error;
+    }
+  });
+
+  // Display All Twits
+  const getExistingTwits = twitModel.getTwits();
+
+  function displayAllTwits(twits = getExistingTwits) {
+    const allUsers = userModel.getUsers();
+
+    const twitWrapper = document.querySelector('#twits-wrapper');
+    twitWrapper.innerHTML = '';
+
+    // Sort twit by descending / new twit post
+    twits.sort((a, b) => b.id - a.id);
+
+    // generate each twit Element
+    twits.forEach((item) => {
+      const ownerTwit = allUsers.find(
+        (user) => user.username === item.ownerTwit
+      );
+
+      const twitItem = document.createElement('div');
+      twitItem.className = 'border-b-2 p-4 border-line';
+      twitItem.id = `twit-${item.id}`;
+      twitItem.innerHTML = `
+        <div class="flex gap-4">
+          <img
+            src="${ownerTwit.avatar}"
+            class="h-10 w-10 rounded-full"
+            alt="profile-user"
+          />
+          <div class="w-full">
+            <div class="flex justify-between items-center">
+              <div class="flex flex-col">
+                <p class="text-white font-semibold">${ownerTwit.fullname}</p>
+                <p class="text-gray-500 text-sm">
+                  @${ownerTwit.username} * ${item.createdAt}
+                </p>
+              </div>
+              <div
+                class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
+              >
+                <p class="font-semibold">${item.emoticon}</p>
+              </div>
+            </div>
+            <p class="mt-4 text-sm">${item.text}</p>
+          </div>
+        </div>
+        <div class="flex flex-row gap-8 items-center mt-4 pl-14">
+          <a href="#" class="flex flex-row gap-2 items-center">
+            <img src="assets/heart.svg" />
+            <p class="text-sm text-pink-500">128 Likes</p>
+          </a>
+          <a href="#" class="flex flex-row gap-2 items-center">
+            <img src="assets/trash.svg" />
+            <p class="text-sm text-gray-500">Delete</p>
+          </a>
+          <a href="#" class="flex flex-row gap-2 items-center">
+            <img src="assets/warning-2.svg" />
+            <p class="text-sm text-gray-500">Report</p>
+          </a>
+        </div>
+      `;
+
+      twitWrapper.appendChild(twitItem);
+    });
+  }
+
+  displayAllTwits();
+});

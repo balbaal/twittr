@@ -21,15 +21,18 @@
         <div class="flex flex-col gap-2">
           <h1 class="text-4xl font-bold">Sign Up</h1>
           <p class="text-base">What’s trend, what’s good for you.</p>
-          <p class="text-sm px-3.5 py-1.5 bg-red-500 rounded-full">
+          <p
+            id="instant-message"
+            class="hidden text-sm px-3.5 py-1.5 bg-red-500 rounded-full"
+          >
             something wrong!!
           </p>
         </div>
 
-        <form class="flex flex-col gap-12">
+        <form id="form-manager" class="flex flex-col gap-12">
           <div class="flex flex-col gap-4">
             <div class="flex flex-col gap-2">
-              <label for="input-fullname">Fullname</label>
+              <label for="form-fullname">Fullname</label>
               <div
                 class="w-full flex flex-row gap-2 items-center bg-gray-dark rounded-full px-3.5 py-3.5"
               >
@@ -37,13 +40,13 @@
                 <input
                   type="text"
                   placeholder="Fullname"
-                  id="input-fullname"
+                  id="form-fullname"
                   class="text-gray-500 focus:font-semibold focus:outline-none"
                 />
               </div>
             </div>
             <div class="flex flex-col gap-2">
-              <label for="input-username">Username</label>
+              <label for="form-username">Username</label>
               <div
                 class="w-full flex flex-row gap-2 items-center bg-gray-dark rounded-full px-3.5 py-3.5"
               >
@@ -51,13 +54,13 @@
                 <input
                   type="text"
                   placeholder="Username"
-                  id="input-username"
+                  id="form-username"
                   class="text-gray-500 focus:font-semibold focus:outline-none"
                 />
               </div>
             </div>
             <div class="flex flex-col gap-2">
-              <label for="input-avatar">Avatar</label>
+              <label for="form-avatar">Avatar</label>
               <div
                 class="w-full flex flex-row gap-2 items-center bg-gray-dark rounded-full px-3.5 py-3.5"
               >
@@ -65,13 +68,13 @@
                 <input
                   type="text"
                   placeholder="URL Avatar"
-                  id="input-avatar"
+                  id="form-avatar"
                   class="text-gray-500 focus:font-semibold focus:outline-none"
                 />
               </div>
             </div>
             <div class="flex flex-col gap-2">
-              <label for="input-password">Password</label>
+              <label for="form-password">Password</label>
               <div
                 class="w-full flex flex-row gap-2 items-center bg-gray-dark rounded-full px-3.5 py-3.5"
               >
@@ -79,7 +82,7 @@
                 <input
                   type="password"
                   placeholder="Password"
-                  id="input-password"
+                  id="form-password"
                   class="text-gray-500 focus:font-semibold focus:outline-none"
                 />
               </div>
@@ -87,6 +90,7 @@
           </div>
           <div class="flex flex-col gap-4">
             <button
+              type="submit"
               class="bg-blue-500 font-bold rounded-full p-3 text-center w-full hover:bg-blue-water-100 cursor-pointer duration-300"
             >
               Create Account
@@ -104,5 +108,8 @@
         <h1 class="font-extrabold text-white text-9xl">twittr.</h1>
       </div>
     </div>
+
+    <script src="js/User.js"></script>
+    <script src="js/registerUser.js"></script>
   </body>
 </html>
