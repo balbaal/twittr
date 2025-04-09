@@ -1,70 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const formManagerPost = document.querySelector('#formManagerPost');
-  const ownerPhoto = document.querySelector('#ownerPhoto');
-  const inputPost = document.querySelector('#input-post');
-  const instantMessage = document.querySelector('#instantMessage');
-
-  const feelingEmoticons = document.querySelectorAll('.data-feeling');
-  let selectedFeeling = null;
-
-  feelingEmoticons.forEach((feeling) => {
-    feeling.addEventListener('click', () => {
-      selectedFeeling = feeling.getAttribute('data-feeling');
-
-      feelingEmoticons.forEach((item) => {
-        item.classList.remove('border-blue-water-100');
-        item.classList.add('border-line');
-      });
-
-      feeling.classList.remove('border-line');
-      feeling.classList.add('border-blue-water-100');
-    });
-  });
+  const profilePhoto = document.querySelector('#profile-photo');
+  const profileFullnameTop = document.querySelector('#profile-fullname-top');
+  const profileFullname = document.querySelector('#profile-fullname');
+  const profileUsername = document.querySelector('#profile-username');
 
   const userModel = new User();
   const twitModel = new Twit();
 
   const usernameLoggedIn = localStorage.getItem(userModel.USERNAME_LOGGED_KEY);
-  const userLoggedData = userModel
+  const usernameProfileVisit = localStorage.getItem(
+    userModel.USERNAME_PROFILE_VISIT
+  );
+
+  const usernameProfileVisitData = userModel
     .getUsers()
-    .find((user) => user.username === usernameLoggedIn);
+    .find((user) => user.username === usernameProfileVisit);
 
-  ownerPhoto.src = userLoggedData.avatar;
-
-  const dateNow = new Date();
-  const year = dateNow.getFullYear();
-  const month = String(dateNow.getMonth() + 1).padStart(2, '0');
-  const date = String(dateNow.getDate()).padStart(2, '0');
-
-  // Create New Twit
-  formManagerPost.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const twitData = {
-      text: inputPost.value,
-      emoticon: selectedFeeling || '',
-      ownerTwit: usernameLoggedIn,
-      createdAt: `${year}-${month}-${date}`,
-    };
-
-    const result = twitModel.saveTwit(twitData);
-
-    if (result.success) {
-      instantMessage.style.display = 'none';
-      inputPost.value = '';
-
-      selectedFeeling = null;
-      feelingEmoticons.forEach((item) => {
-        item.classList.remove('border-blue-water-100');
-        item.classList.add('border-line');
-      });
-
-      displayAllTwit(twitModel.getTwits());
-    } else {
-      instantMessage.style.display = 'flex';
-      instantMessage.textContent = result.error;
-    }
-  });
+  profilePhoto.src = usernameProfileVisitData.avatar;
+  profileFullnameTop.textContent = usernameProfileVisitData.fullname;
+  profileFullname.textContent = usernameProfileVisitData.fullname;
+  profileUsername.textContent = usernameProfileVisitData.username;
 
   // Get Total Like
   function getTotalLike(twit) {
@@ -77,12 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Get All Twit
-  const getExistingTwits = twitModel.getTwits();
-
-  function displayAllTwit(twits = getExistingTwits) {
-    const allUsers = userModel.getUsers();
-
-    const twitWrapper = document.querySelector('#twitWrapper');
+  function displayAllTwit(twits = []) {
+    const twitWrapper = document.querySelector('#twit-wrapper');
     twitWrapper.innerHTML = '';
 
     twits.sort((a, b) => b.id - a.id);
@@ -94,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         username: usernameLoggedIn,
       });
 
+      const allUsers = userModel.getUsers();
       const ownerTwit = allUsers.find(
         (user) => user.username === item.ownerTwit
       );
@@ -204,7 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
           // Response condition
           if (result.success) {
             instantMessage.style.display = 'none';
-            displayAllTwit(twitModel.getTwits());
+            displayAllTwit(
+              twitModel
+                .getTwits()
+                .filter((twit) => twit.ownerTwit === usernameProfileVisit)
+            );
           } else {
             instantMessage.style.display = 'flex';
             instantMessage.textContent = result.error;
@@ -223,5 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  displayAllTwit();
+  const twits = twitModel
+    .getTwits()
+    .filter((twit) => twit.ownerTwit === usernameProfileVisit);
+  displayAllTwit(twits);
 });

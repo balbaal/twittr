@@ -18,7 +18,7 @@
     <div class="max-w-7xl mx-auto flex flex-row gap-5 h-screen px-7">
       <!-- Sidebar Left: Mobile View -->
       <section class="xl:hidden">
-        <h1 class="text-3xl font-bold py-4">tw.</h1>
+        <a href="index.html" class="text-3xl font-bold py-4">tw.</a>
         <ul>
           <li class="py-3">
             <a href="#">
@@ -56,7 +56,7 @@
             </a>
           </li>
           <li class="py-3">
-            <a href="#">
+            <a href="login.html">
               <img src="assets/group.svg" class="h-7 w-7 inline" />
             </a>
           </li>
@@ -65,7 +65,7 @@
 
       <!-- Sidebar Left: Desktop View -->
       <section class="hidden min-w-[250px] xl:flex flex-col gap-3 mt-4">
-        <h1 class="text-3xl font-bold">twittr.</h1>
+        <a href="index.html" class="text-3xl font-bold">twittr.</a>
         <ul class="text-xl -ml-3">
           <li class="py-3">
             <a
@@ -135,11 +135,11 @@
           </li>
           <li class="py-3">
             <a
-              href="#"
+              href="login.html"
               class="hover:bg-gray-dark rounded-full pl-3 pr-6 py-3 hover:duration-300"
             >
               <img src="assets/group.svg" class="h-7 w-7 inline mr-4" />
-              Premium
+              Logout
             </a>
           </li>
         </ul>
@@ -151,8 +151,16 @@
       </section>
       <section class="w-full h-fit border-line border-l-2 border-r-2">
         <div id="profile-header">
+          <p
+            id="instantMessage"
+            class="hidden text-sm px-3.5 py-1.5 bg-red-500"
+          >
+            something wrong!!
+          </p>
           <div class="flex flex-col p-4">
-            <h4 class="font-semibold text-xl">Piko</h4>
+            <h4 id="profile-fullname-top" class="font-semibold text-xl">
+              Piko
+            </h4>
             <p class="text-gray-500 text-sm">2 posts</p>
           </div>
           <div
@@ -160,9 +168,10 @@
           ></div>
           <div class="relative flex p-4 w-full">
             <img
+              id="profile-photo"
               src="assets/girl1.png"
               alt="profile-image"
-              class="h-36 w-36 rounded-full border-4 border-black absolute -mt-22"
+              class="h-36 w-36 object-cover rounded-full border-4 border-black absolute -mt-22"
             />
             <button
               class="px-4 py-2 border-line border-2 text-sm rounded-full font-semibold text-white bg-black hover:bg-blue-water-100 duration-300 h-fit ml-auto cursor-pointer"
@@ -173,8 +182,10 @@
         </div>
         <div class="flex flex-col gap-2 p-4">
           <div class="flex flex-col">
-            <h3 class="text-xl text-white font-semibold">Piko</h3>
-            <p class="text-sm text-gray-500">@hai_piko</p>
+            <h3 id="profile-fullname" class="text-xl text-white font-semibold">
+              Piko
+            </h3>
+            <p id="profile-username" class="text-sm text-gray-500">@hai_piko</p>
           </div>
           <p class="text-sm text-gray-500">Joined February 2025</p>
           <div class="flex flex-row gap-4 text-sm text-white">
@@ -223,146 +234,8 @@
         </div>
 
         <!-- Post  -->
-        <div class="flex flex-col">
-          <!-- Post Item -->
-          <div class="border-b-2 p-4 border-line">
-            <div class="flex gap-4">
-              <img
-                src="assets/girl3.png"
-                class="h-10 w-10"
-                alt="profile-user"
-              />
-              <div>
-                <div class="flex justify-between items-center">
-                  <div class="flex flex-col">
-                    <p class="text-white font-semibold">Andovi da Lopez</p>
-                    <p class="text-gray-500 text-sm">
-                      @AndovidaLopez * 5 March 2025
-                    </p>
-                  </div>
-                  <div
-                    class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
-                  >
-                    <p>😎</p>
-                    <p class="font-semibold">Sad</p>
-                  </div>
-                </div>
-                <p class="mt-4 text-sm">
-                  Malang, Surabaya, Sukabumi, dan kota kota lain di seluruh
-                  Indonesia. Perjuangan bukan cuman di Jakarta. Kenapa
-                  kebanyakan TV Nasional dan Media Mainstream tidak meliput ini?
-                  Semangat dan hati hati untuk semua yang bersuara di seluruh
-                  Indonesia.
-                </p>
-              </div>
-            </div>
-            <div class="flex flex-row gap-8 items-center mt-4 pl-14">
-              <a href="#" class="flex flex-row gap-2 items-center">
-                <img src="assets/heart.svg" />
-                <p class="text-sm text-pink-500">128 Likes</p>
-              </a>
-              <a href="#" class="flex flex-row gap-2 items-center">
-                <img src="assets/trash.svg" />
-                <p class="text-sm text-gray-500">Delete</p>
-              </a>
-              <a href="#" class="flex flex-row gap-2 items-center">
-                <img src="assets/warning-2.svg" />
-                <p class="text-sm text-gray-500">Report</p>
-              </a>
-            </div>
-          </div>
-          <div class="border-b-2 p-4 border-line">
-            <div class="flex gap-4">
-              <img
-                src="assets/girl3.png"
-                class="h-10 w-10"
-                alt="profile-user"
-              />
-              <div>
-                <div class="flex justify-between items-center">
-                  <div class="flex flex-col">
-                    <p class="text-white font-semibold">Andovi da Lopez</p>
-                    <p class="text-gray-500 text-sm">
-                      @AndovidaLopez * 5 March 2025
-                    </p>
-                  </div>
-                  <div
-                    class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
-                  >
-                    <p>😎</p>
-                    <p class="font-semibold">Sad</p>
-                  </div>
-                </div>
-                <p class="mt-4 text-sm">
-                  Malang, Surabaya, Sukabumi, dan kota kota lain di seluruh
-                  Indonesia. Perjuangan bukan cuman di Jakarta. Kenapa
-                  kebanyakan TV Nasional dan Media Mainstream tidak meliput ini?
-                  Semangat dan hati hati untuk semua yang bersuara di seluruh
-                  Indonesia.
-                </p>
-              </div>
-            </div>
-            <div class="flex flex-row gap-8 items-center mt-4 pl-14">
-              <a href="#" class="flex flex-row gap-2 items-center">
-                <img src="assets/heart.svg" />
-                <p class="text-sm text-pink-500">128 Likes</p>
-              </a>
-              <a href="#" class="flex flex-row gap-2 items-center">
-                <img src="assets/trash.svg" />
-                <p class="text-sm text-gray-500">Delete</p>
-              </a>
-              <a href="#" class="flex flex-row gap-2 items-center">
-                <img src="assets/warning-2.svg" />
-                <p class="text-sm text-gray-500">Report</p>
-              </a>
-            </div>
-          </div>
-          <div class="border-b-2 p-4 border-line">
-            <div class="flex gap-4">
-              <img
-                src="assets/girl3.png"
-                class="h-10 w-10"
-                alt="profile-user"
-              />
-              <div>
-                <div class="flex justify-between items-center">
-                  <div class="flex flex-col">
-                    <p class="text-white font-semibold">Andovi da Lopez</p>
-                    <p class="text-gray-500 text-sm">
-                      @AndovidaLopez * 5 March 2025
-                    </p>
-                  </div>
-                  <div
-                    class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
-                  >
-                    <p>😎</p>
-                    <p class="font-semibold">Sad</p>
-                  </div>
-                </div>
-                <p class="mt-4 text-sm">
-                  Malang, Surabaya, Sukabumi, dan kota kota lain di seluruh
-                  Indonesia. Perjuangan bukan cuman di Jakarta. Kenapa
-                  kebanyakan TV Nasional dan Media Mainstream tidak meliput ini?
-                  Semangat dan hati hati untuk semua yang bersuara di seluruh
-                  Indonesia.
-                </p>
-              </div>
-            </div>
-            <div class="flex flex-row gap-8 items-center mt-4 pl-14">
-              <a href="#" class="flex flex-row gap-2 items-center">
-                <img src="assets/heart.svg" />
-                <p class="text-sm text-pink-500">128 Likes</p>
-              </a>
-              <a href="#" class="flex flex-row gap-2 items-center">
-                <img src="assets/trash.svg" />
-                <p class="text-sm text-gray-500">Delete</p>
-              </a>
-              <a href="#" class="flex flex-row gap-2 items-center">
-                <img src="assets/warning-2.svg" />
-                <p class="text-sm text-gray-500">Report</p>
-              </a>
-            </div>
-          </div>
+        <div id="twit-wrapper" class="flex flex-col">
+          <!-- Post Item Here  -->
         </div>
       </section>
       <section class="hidden min-w-[320px] lg:flex flex-col gap-4">
@@ -427,5 +300,9 @@
         </div>
       </section>
     </div>
+
+    <script src="js/User.js"></script>
+    <script src="js/Twit.js"></script>
+    <script src="js/userProfile.js"></script>
   </body>
 </html>
