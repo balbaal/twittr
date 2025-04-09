@@ -19,8 +19,8 @@ class Twit {
   }
 
   saveTwit(twitData) {
-    const { twitText, twitEmoticon } = twitData;
-    if (twitText.trim() === '' || twitEmoticon.trim() === '') {
+    const { text, emoticon } = twitData;
+    if (text.trim() === '' || emoticon.trim() === '') {
       return {
         success: false,
         error: "All field can't be empty",

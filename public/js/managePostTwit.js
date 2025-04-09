@@ -41,10 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
 
     const twitData = {
-      twitText: inputPost.value,
-      twitEmoticon: selectedFeeling,
-      twitOwner: usernameLoggedIn,
-      twitCreatedAt: `${year}-${month}-${date}`,
+      text: inputPost.value,
+      emoticon: selectedFeeling,
+      ownerTwit: usernameLoggedIn,
+      createdAt: `${year}-${month}-${date}`,
     };
 
     const result = twitModel.saveTwit(twitData);
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     twits.forEach((item, i) => {
       const ownerTwit = allUsers.find(
-        (user) => user.username === item.twitOwner
+        (user) => user.username === item.ownerTwit
       );
 
       const twitItem = document.createElement('div');
@@ -97,16 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="flex flex-col">
                 <p class="text-white font-semibold">${ownerTwit.fullname}</p>
                 <p class="text-gray-500 text-sm">
-                  @${ownerTwit.username} * ${item.twitCreatedAt}
+                  @${ownerTwit.username} * ${item.createdAt}
                 </p>
               </div>
               <div
                 class="flex items-center justify-center gap-2 border-line border-2 rounded-full px-3 py-1.5 cursor-pointer"
               >
-                <p class="font-semibold">${item.twitEmoticon}</p>
+                <p class="font-semibold">${item.emoticon}</p>
               </div>
             </div>
-            <p class="mt-4 text-sm">${item.twitText}</p>
+            <p class="mt-4 text-sm">${item.text}</p>
           </div>
         </div>
         <div class="flex flex-row gap-8 items-center mt-4 pl-14">
